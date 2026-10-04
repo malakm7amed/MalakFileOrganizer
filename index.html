@@ -61,6 +61,7 @@ button {
     background: white;
     color: #172033;
     box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    transition: 0.2s;
 }
 
 button:hover {
@@ -150,7 +151,9 @@ footer {
     <!-- SUBJECTS -->
     <div id="subjectsPage" class="hidden">
 
-        <button class="back" onclick="goBack()">← Back</button>
+        <button class="back" onclick="goBack()">
+            ← Back
+        </button>
 
         <h2 class="title">
             Section <span id="sectionNumber"></span> — Subjects
@@ -166,6 +169,11 @@ footer {
             <button class="subject-btn"
                 onclick="showMaterials('Mathematics')">
                 📐 Mathematics
+            </button>
+
+            <button class="subject-btn"
+                onclick="showMaterials('Botany')">
+                🌿 Botany
             </button>
 
             <button class="subject-btn"
@@ -200,25 +208,25 @@ footer {
             <div class="material">
                 <h3>📖 Lectures</h3>
                 <p>Lecture PDFs and explanations</p>
-                <a href="#">Open</a>
+                <a href="#" onclick="openFiles('lectures')">Open</a>
             </div>
 
             <div class="material">
                 <h3>🧪 Sections</h3>
                 <p>Section materials and files</p>
-                <a href="#">Open</a>
+                <a href="#" onclick="openFiles('sections')">Open</a>
             </div>
 
             <div class="material">
                 <h3>📝 Assignments</h3>
                 <p>Assignments and required tasks</p>
-                <a href="#">Open</a>
+                <a href="#" onclick="openFiles('assignments')">Open</a>
             </div>
 
             <div class="material">
                 <h3>📄 PDFs</h3>
                 <p>New files uploaded by admins</p>
-                <a href="#">Open</a>
+                <a href="#" onclick="openFiles('pdfs')">Open</a>
             </div>
 
         </div>
@@ -233,6 +241,7 @@ footer {
 <script>
 
 let currentSection = 1;
+let currentSubject = "";
 
 function showSubjects(section) {
 
@@ -253,6 +262,8 @@ function showSubjects(section) {
 
 function showMaterials(subject) {
 
+    currentSubject = subject;
+
     document.getElementById("subjectsPage")
         .classList.add("hidden");
 
@@ -261,6 +272,17 @@ function showMaterials(subject) {
 
     document.getElementById("subjectTitle")
         .innerText = subject;
+}
+
+function openFiles(type) {
+
+    alert(
+        "Files for " +
+        currentSubject +
+        " - " +
+        type +
+        " will be added here."
+    );
 }
 
 function goBack() {
