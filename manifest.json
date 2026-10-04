@@ -1,0 +1,15 @@
+{
+  "name": "AgriHub",
+  "short_name": "AgriHub",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#172033",
+  "icons": [
+    {
+      "src": "agrihub-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
