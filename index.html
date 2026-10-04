@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -8,17 +9,18 @@
 
 <title>AgriHub</title>
 
-<!-- App Icon -->
 <link rel="icon" type="image/png" href="agrihub-icon-512.png">
+
 <link rel="apple-touch-icon" href="agrihub-icon-512.png">
 
-<!-- PWA Manifest -->
 <link rel="manifest" href="manifest.json">
 
-<!-- Mobile App Settings -->
 <meta name="theme-color" content="#172033">
+
 <meta name="mobile-web-app-capable" content="yes">
+
 <meta name="apple-mobile-web-app-capable" content="yes">
+
 <meta name="apple-mobile-web-app-title" content="AgriHub">
 
 
@@ -79,11 +81,10 @@ button {
     background: white;
     color: #172033;
     box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    transition: 0.2s;
 }
 
-button:hover {
-    transform: translateY(-2px);
+button:active {
+    transform: scale(0.98);
 }
 
 .section-btn {
@@ -102,7 +103,7 @@ button:hover {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .materials {
@@ -148,11 +149,12 @@ footer {
 
 <body>
 
+
 <header>
 
-    <h1>📚 AgriHub</h1>
+<h1>📚 AgriHub</h1>
 
-    <p>Your university materials in one place</p>
+<p>Your university materials in one place</p>
 
 </header>
 
@@ -160,57 +162,349 @@ footer {
 <div class="container">
 
 
-    <!-- SECTIONS -->
+<!-- SECTIONS -->
 
-    <div id="sectionsPage">
+<div id="sectionsPage">
 
-        <h2 class="title">Choose your Section</h2>
+<h2 class="title">Choose your Section</h2>
 
-        <div class="grid">
+<div class="grid">
 
-            <button
-                class="section-btn"
-                onclick="showSubjects(1)">
-                Section 1
-            </button>
+<button
+class="section-btn"
+type="button"
+onclick="showSubjects(1)">
+Section 1
+</button>
 
-            <button
-                class="section-btn"
-                onclick="showSubjects(2)">
-                Section 2
-            </button>
+<button
+class="section-btn"
+type="button"
+onclick="showSubjects(2)">
+Section 2
+</button>
 
-            <button
-                class="section-btn"
-                onclick="showSubjects(3)">
-                Section 3
-            </button>
+<button
+class="section-btn"
+type="button"
+onclick="showSubjects(3)">
+Section 3
+</button>
 
-            <button
-                class="section-btn"
-                onclick="showSubjects(4)">
-                Section 4
-            </button>
+<button
+class="section-btn"
+type="button"
+onclick="showSubjects(4)">
+Section 4
+</button>
 
-            <button
-                class="section-btn"
-                onclick="showSubjects(5)">
-                Section 5
-            </button>
+<button
+class="section-btn"
+type="button"
+onclick="showSubjects(5)">
+Section 5
+</button>
 
-            <button
-                class="section-btn"
-                onclick="showSubjects(6)">
-                Section 6
-            </button>
+<button
+class="section-btn"
+type="button"
+onclick="showSubjects(6)">
+Section 6
+</button>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 
-    <!-- SUBJECTS -->
+<!-- SUBJECTS -->
 
-    <div id="subjectsPage" class="hidden">
+<div id="subjectsPage" class="hidden">
 
-       
+<button
+class="back"
+type="button"
+onclick="goBackToSections()">
+← Back
+</button>
+
+<h2 class="title">
+Section <span id="sectionNumber"></span> — Subjects
+</h2>
+
+<div class="grid">
+
+
+<button
+class="subject-btn"
+type="button"
+onclick="showMaterials('English')">
+🇬🇧 English
+</button>
+
+
+<button
+class="subject-btn"
+type="button"
+onclick="showMaterials('Mathematics')">
+📐 Mathematics
+</button>
+
+
+<button
+class="subject-btn"
+type="button"
+onclick="showMaterials('Botany')">
+🌿 Botany
+</button>
+
+
+<button
+class="subject-btn"
+type="button"
+onclick="showMaterials('Organic Agriculture')">
+🌱 Organic Agriculture
+</button>
+
+
+<button
+class="subject-btn"
+type="button"
+onclick="showMaterials('Economics')">
+💰 Economics
+</button>
+
+
+<button
+class="subject-btn"
+type="button"
+onclick="showMaterials('Quality Management')">
+✅ Quality Management
+</button>
+
+
+</div>
+
+</div>
+
+
+<!-- MATERIALS -->
+
+<div id="materialsPage" class="hidden">
+
+<button
+class="back"
+type="button"
+onclick="goBackToSubjects()">
+← Back
+</button>
+
+<h2
+class="title"
+id="subjectTitle">
+</h2>
+
+
+<div class="materials">
+
+
+<div class="material">
+
+<h3>📖 Lectures</h3>
+
+<p>
+Lecture PDFs and explanations
+</p>
+
+<a
+href="#"
+onclick="openFiles(event, 'lectures')">
+Open
+</a>
+
+</div>
+
+
+<div class="material">
+
+<h3>🧪 Sections</h3>
+
+<p>
+Section materials and files
+</p>
+
+<a
+href="#"
+onclick="openFiles(event, 'sections')">
+Open
+</a>
+
+</div>
+
+
+<div class="material">
+
+<h3>📝 Assignments</h3>
+
+<p>
+Assignments and required tasks
+</p>
+
+<a
+href="#"
+onclick="openFiles(event, 'assignments')">
+Open
+</a>
+
+</div>
+
+
+<div class="material">
+
+<h3>📄 PDFs</h3>
+
+<p>
+New files uploaded by admins
+</p>
+
+<a
+href="#"
+onclick="openFiles(event, 'pdfs')">
+Open
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<footer>
+
+Made for students ❤️
+
+</footer>
+
+
+
+<script>
+
+
+let currentSection = 1;
+
+let currentSubject = "";
+
+
+
+function hideAllPages() {
+
+document
+.getElementById("sectionsPage")
+.classList
+.add("hidden");
+
+document
+.getElementById("subjectsPage")
+.classList
+.add("hidden");
+
+document
+.getElementById("materialsPage")
+.classList
+.add("hidden");
+
+}
+
+
+
+function showSubjects(section) {
+
+currentSection = section;
+
+hideAllPages();
+
+document
+.getElementById("sectionNumber")
+.textContent = section;
+
+document
+.getElementById("subjectsPage")
+.classList
+.remove("hidden");
+
+}
+
+
+
+function showMaterials(subject) {
+
+currentSubject = subject;
+
+hideAllPages();
+
+document
+.getElementById("subjectTitle")
+.textContent =
+"Section " + currentSection + " — " + subject;
+
+document
+.getElementById("materialsPage")
+.classList
+.remove("hidden");
+
+}
+
+
+
+function goBackToSections() {
+
+hideAllPages();
+
+document
+.getElementById("sectionsPage")
+.classList
+.remove("hidden");
+
+}
+
+
+
+function goBackToSubjects() {
+
+hideAllPages();
+
+document
+.getElementById("subjectsPage")
+.classList
+.remove("hidden");
+
+}
+
+
+
+function openFiles(event, type) {
+
+event.preventDefault();
+
+alert(
+"Files for " +
+currentSubject +
+" — " +
+type +
+" will be added here."
+);
+
+}
+
+
+</script>
+
+
+</body>
+
+    </html>
