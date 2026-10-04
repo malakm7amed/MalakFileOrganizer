@@ -2,27 +2,19 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AgriHub</title>
 
 <link rel="icon" type="image/png" href="agrihub-icon-512.png">
-
 <link rel="apple-touch-icon" href="agrihub-icon-512.png">
-
 <link rel="manifest" href="manifest.json">
 
 <meta name="theme-color" content="#172033">
-
 <meta name="mobile-web-app-capable" content="yes">
-
 <meta name="apple-mobile-web-app-capable" content="yes">
-
 <meta name="apple-mobile-web-app-title" content="AgriHub">
-
 
 <style>
 
@@ -71,39 +63,31 @@ header p {
     gap: 14px;
 }
 
-button {
-    border: none;
-    border-radius: 15px;
-    padding: 20px 10px;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 85px;
+    padding: 15px;
     background: white;
     color: #172033;
+    text-decoration: none;
+    border-radius: 15px;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
     box-shadow: 0 3px 12px rgba(0,0,0,0.08);
 }
 
-button:active {
-    transform: scale(0.98);
-}
-
-.section-btn {
-    min-height: 85px;
-}
-
-.subject-btn {
-    min-height: 70px;
-}
-
 .back {
+    display: inline-block;
     background: #172033;
     color: white;
-    margin-bottom: 20px;
+    text-decoration: none;
     padding: 12px 20px;
-}
-
-.hidden {
-    display: none !important;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-weight: bold;
 }
 
 .materials {
@@ -143,368 +127,214 @@ footer {
 }
 
 </style>
-
 </head>
 
 
 <body>
 
-
 <header>
-
-<h1>📚 AgriHub</h1>
-
-<p>Your university materials in one place</p>
-
+    <h1>📚 AgriHub</h1>
+    <p>Your university materials in one place</p>
 </header>
 
 
 <div class="container">
 
+    <h2 class="title">Choose your Section</h2>
 
-<!-- SECTIONS -->
+    <div class="grid">
 
-<div id="sectionsPage">
+        <a class="card" href="#section1">
+            Section 1
+        </a>
 
-<h2 class="title">Choose your Section</h2>
+        <a class="card" href="#section2">
+            Section 2
+        </a>
 
-<div class="grid">
+        <a class="card" href="#section3">
+            Section 3
+        </a>
 
-<button
-class="section-btn"
-type="button"
-onclick="showSubjects(1)">
-Section 1
-</button>
+        <a class="card" href="#section4">
+            Section 4
+        </a>
 
-<button
-class="section-btn"
-type="button"
-onclick="showSubjects(2)">
-Section 2
-</button>
+        <a class="card" href="#section5">
+            Section 5
+        </a>
 
-<button
-class="section-btn"
-type="button"
-onclick="showSubjects(3)">
-Section 3
-</button>
+        <a class="card" href="#section6">
+            Section 6
+        </a>
 
-<button
-class="section-btn"
-type="button"
-onclick="showSubjects(4)">
-Section 4
-</button>
+    </div>
 
-<button
-class="section-btn"
-type="button"
-onclick="showSubjects(5)">
-Section 5
-</button>
 
-<button
-class="section-btn"
-type="button"
-onclick="showSubjects(6)">
-Section 6
-</button>
+    <br><br>
 
-</div>
 
-</div>
+    <div id="section1">
 
+        <a class="back" href="#">
+            ↑ Sections
+        </a>
 
-<!-- SUBJECTS -->
+        <h2 class="title">
+            Section 1 — Subjects
+        </h2>
 
-<div id="subjectsPage" class="hidden">
+        <div class="grid">
 
-<button
-class="back"
-type="button"
-onclick="goBackToSections()">
-← Back
-</button>
+            <a class="card" href="#english">
+                🇬🇧 English
+            </a>
 
-<h2 class="title">
-Section <span id="sectionNumber"></span> — Subjects
-</h2>
+            <a class="card" href="#mathematics">
+                📐 Mathematics
+            </a>
 
-<div class="grid">
+            <a class="card" href="#botany">
+                🌿 Botany
+            </a>
 
+            <a class="card" href="#organic">
+                🌱 Organic Agriculture
+            </a>
 
-<button
-class="subject-btn"
-type="button"
-onclick="showMaterials('English')">
-🇬🇧 English
-</button>
+            <a class="card" href="#economics">
+                💰 Economics
+            </a>
 
+            <a class="card" href="#quality">
+                ✅ Quality Management
+            </a>
 
-<button
-class="subject-btn"
-type="button"
-onclick="showMaterials('Mathematics')">
-📐 Mathematics
-</button>
+        </div>
 
+    </div>
 
-<button
-class="subject-btn"
-type="button"
-onclick="showMaterials('Botany')">
-🌿 Botany
-</button>
 
+    <br><br>
 
-<button
-class="subject-btn"
-type="button"
-onclick="showMaterials('Organic Agriculture')">
-🌱 Organic Agriculture
-</button>
 
+    <div id="section2">
 
-<button
-class="subject-btn"
-type="button"
-onclick="showMaterials('Economics')">
-💰 Economics
-</button>
+        <h2 class="title">
+            Section 2 — Subjects
+        </h2>
 
+        <div class="grid">
 
-<button
-class="subject-btn"
-type="button"
-onclick="showMaterials('Quality Management')">
-✅ Quality Management
-</button>
+            <a class="card" href="#english">🇬🇧 English</a>
+            <a class="card" href="#mathematics">📐 Mathematics</a>
+            <a class="card" href="#botany">🌿 Botany</a>
+            <a class="card" href="#organic">🌱 Organic Agriculture</a>
+            <a class="card" href="#economics">💰 Economics</a>
+            <a class="card" href="#quality">✅ Quality Management</a>
 
+        </div>
 
-</div>
+    </div>
 
-</div>
 
+    <br><br>
 
-<!-- MATERIALS -->
 
-<div id="materialsPage" class="hidden">
+    <div id="section3">
 
-<button
-class="back"
-type="button"
-onclick="goBackToSubjects()">
-← Back
-</button>
+        <h2 class="title">
+            Section 3 — Subjects
+        </h2>
 
-<h2
-class="title"
-id="subjectTitle">
-</h2>
+        <div class="grid">
 
+            <a class="card" href="#english">🇬🇧 English</a>
+            <a class="card" href="#mathematics">📐 Mathematics</a>
+            <a class="card" href="#botany">🌿 Botany</a>
+            <a class="card" href="#organic">🌱 Organic Agriculture</a>
+            <a class="card" href="#economics">💰 Economics</a>
+            <a class="card" href="#quality">✅ Quality Management</a>
 
-<div class="materials">
+        </div>
 
+    </div>
 
-<div class="material">
 
-<h3>📖 Lectures</h3>
+    <br><br>
 
-<p>
-Lecture PDFs and explanations
-</p>
 
-<a
-href="#"
-onclick="openFiles(event, 'lectures')">
-Open
-</a>
+    <div id="section4">
 
-</div>
+        <h2 class="title">
+            Section 4 — Subjects
+        </h2>
 
+        <div class="grid">
 
-<div class="material">
+            <a class="card" href="#english">🇬🇧 English</a>
+            <a class="card" href="#mathematics">📐 Mathematics</a>
+            <a class="card" href="#botany">🌿 Botany</a>
+            <a class="card" href="#organic">🌱 Organic Agriculture</a>
+            <a class="card" href="#economics">💰 Economics</a>
+            <a class="card" href="#quality">✅ Quality Management</a>
 
-<h3>🧪 Sections</h3>
+        </div>
 
-<p>
-Section materials and files
-</p>
+    </div>
 
-<a
-href="#"
-onclick="openFiles(event, 'sections')">
-Open
-</a>
 
-</div>
+    <br><br>
 
 
-<div class="material">
+    <div id="section5">
 
-<h3>📝 Assignments</h3>
+        <h2 class="title">
+            Section 5 — Subjects
+        </h2>
 
-<p>
-Assignments and required tasks
-</p>
+        <div class="grid">
 
-<a
-href="#"
-onclick="openFiles(event, 'assignments')">
-Open
-</a>
+            <a class="card" href="#english">🇬🇧 English</a>
+            <a class="card" href="#mathematics">📐 Mathematics</a>
+            <a class="card" href="#botany">🌿 Botany</a>
+            <a class="card" href="#organic">🌱 Organic Agriculture</a>
+            <a class="card" href="#economics">💰 Economics</a>
+            <a class="card" href="#quality">✅ Quality Management</a>
 
-</div>
+        </div>
 
+    </div>
 
-<div class="material">
 
-<h3>📄 PDFs</h3>
+    <br><br>
 
-<p>
-New files uploaded by admins
-</p>
 
-<a
-href="#"
-onclick="openFiles(event, 'pdfs')">
-Open
-</a>
+    <div id="section6">
 
-</div>
+        <h2 class="title">
+            Section 6 — Subjects
+        </h2>
 
+        <div class="grid">
 
-</div>
+            <a class="card" href="#english">🇬🇧 English</a>
+            <a class="card" href="#mathematics">📐 Mathematics</a>
+            <a class="card" href="#botany">🌿 Botany</a>
+            <a class="card" href="#organic">🌱 Organic Agriculture</a>
+            <a class="card" href="#economics">💰 Economics</a>
+            <a class="card" href="#quality">✅ Quality Management</a>
 
-</div>
+        </div>
 
+    </div>
 
 </div>
 
 
 <footer>
-
-Made for students ❤️
-
+    Made for students ❤️
 </footer>
 
-
-
-<script>
-
-
-let currentSection = 1;
-
-let currentSubject = "";
-
-
-
-function hideAllPages() {
-
-document
-.getElementById("sectionsPage")
-.classList
-.add("hidden");
-
-document
-.getElementById("subjectsPage")
-.classList
-.add("hidden");
-
-document
-.getElementById("materialsPage")
-.classList
-.add("hidden");
-
-}
-
-
-
-function showSubjects(section) {
-
-currentSection = section;
-
-hideAllPages();
-
-document
-.getElementById("sectionNumber")
-.textContent = section;
-
-document
-.getElementById("subjectsPage")
-.classList
-.remove("hidden");
-
-}
-
-
-
-function showMaterials(subject) {
-
-currentSubject = subject;
-
-hideAllPages();
-
-document
-.getElementById("subjectTitle")
-.textContent =
-"Section " + currentSection + " — " + subject;
-
-document
-.getElementById("materialsPage")
-.classList
-.remove("hidden");
-
-}
-
-
-
-function goBackToSections() {
-
-hideAllPages();
-
-document
-.getElementById("sectionsPage")
-.classList
-.remove("hidden");
-
-}
-
-
-
-function goBackToSubjects() {
-
-hideAllPages();
-
-document
-.getElementById("subjectsPage")
-.classList
-.remove("hidden");
-
-}
-
-
-
-function openFiles(event, type) {
-
-event.preventDefault();
-
-alert(
-"Files for " +
-currentSubject +
-" — " +
-type +
-" will be added here."
-);
-
-}
-
-
-</script>
-
-
 </body>
-
     </html>
