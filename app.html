@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AgriHub</title><link rel="icon" type="image/png" href="agrihub-icon-512.png">
+<title>AgriHub</title>
+
+<link rel="icon" type="image/png" href="agrihub-icon-512.png">
 <link rel="apple-touch-icon" href="agrihub-icon-512.png">
 <link rel="manifest" href="manifest.json">
 
+<meta name="theme-color" content="#172033">
+
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -24,26 +30,26 @@ header {
     background: #172033;
     color: white;
     text-align: center;
-    padding: 32px 20px;
+    padding: 30px 20px;
 }
 
 header h1 {
     margin: 0;
-    font-size: 34px;
+    font-size: 32px;
 }
 
 header p {
     margin: 8px 0 0;
-    opacity: .8;
+    opacity: 0.8;
 }
 
 .container {
     width: 90%;
-    max-width: 900px;
+    max-width: 700px;
     margin: 30px auto;
 }
 
-h2 {
+.title {
     text-align: center;
     margin-bottom: 25px;
 }
@@ -51,34 +57,34 @@ h2 {
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    gap: 16px;
 }
 
 .card {
-    display: block;
+    border: none;
     background: white;
     color: #172033;
-    text-decoration: none;
-    padding: 30px 15px;
+    padding: 28px 12px;
     border-radius: 18px;
     text-align: center;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: bold;
-    box-shadow: 0 5px 18px rgba(0,0,0,.08);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     cursor: pointer;
-    border: none;
-    width: 100%;
 }
 
 .card:active {
-    transform: scale(.97);
+    transform: scale(0.97);
 }
 
 .back {
-    display: inline-block;
+    border: none;
+    background: #172033;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 10px;
     margin-bottom: 20px;
-    text-decoration: none;
-    color: #172033;
+    cursor: pointer;
     font-weight: bold;
 }
 
@@ -86,211 +92,266 @@ h2 {
     display: none;
 }
 
-footer {
+.message {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
     text-align: center;
-    padding: 30px;
-    color: #777;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
-@media (max-width: 600px) {
-    .grid {
-        grid-template-columns: 1fr 1fr;
-    }
+footer {
+    text-align: center;
+    color: #888;
+    padding: 30px;
 }
+
 </style>
 </head>
+
 
 <body>
 
 <header>
-    <h1>📚 AgriHub</h1>
-    <p>Your university materials in one place</p>
+
+<h1>📚 AgriHub</h1>
+
+<p>Your university materials in one place</p>
+
 </header>
 
 
-<!-- HOME -->
+<!-- ================= HOME ================= -->
+
 <div class="container" id="home">
 
-    <h2>Choose your Section</h2>
+<h2 class="title">Choose your Section</h2>
 
-    <div class="grid">
+<div class="grid">
 
-        <button class="card" onclick="showSection(1)">📘 Section 1</button>
-        <button class="card" onclick="showSection(2)">📗 Section 2</button>
-        <button class="card" onclick="showSection(3)">📙 Section 3</button>
-        <button class="card" onclick="showSection(4)">📕 Section 4</button>
-        <button class="card" onclick="showSection(5)">📒 Section 5</button>
-        <button class="card" onclick="showSection(6)">📓 Section 6</button>
+<button class="card" onclick="showSection(1)">
+📘 Section 1
+</button>
 
-    </div>
+<button class="card" onclick="showSection(2)">
+📗 Section 2
+</button>
+
+<button class="card" onclick="showSection(3)">
+📙 Section 3
+</button>
+
+<button class="card" onclick="showSection(4)">
+📕 Section 4
+</button>
+
+<button class="card" onclick="showSection(5)">
+📒 Section 5
+</button>
+
+<button class="card" onclick="showSection(6)">
+📓 Section 6
+</button>
+
+</div>
 
 </div>
 
 
-<!-- SUBJECTS -->
+<!-- ================= SUBJECTS ================= -->
+
 <div class="container hidden" id="subjects">
 
-    <a class="back" href="#" onclick="goHome()">← Back</a>
+<button class="back" onclick="goHome()">
+← Back
+</button>
 
-    <h2 id="sectionTitle">Section</h2>
+<h2 class="title" id="sectionTitle"></h2>
 
-    <div class="grid">
+<div class="grid">
 
-        <button class="card" onclick="showSubject('Botany')">
-            🌱 Botany
-        </button>
+<button class="card" onclick="showSubject('Botany')">
+🌱 Botany
+</button>
 
-        <button class="card" onclick="showSubject('Organic Chemistry')">
-            🧪 Organic Chemistry
-        </button>
+<button class="card" onclick="showSubject('Organic Agriculture')">
+🌾 Organic Agriculture
+</button>
 
-        <button class="card" onclick="showSubject('Mathematics')">
-            📐 Mathematics
-        </button>
+<button class="card" onclick="showSubject('Mathematics')">
+📐 Mathematics
+</button>
 
-        <button class="card" onclick="showSubject('English')">
-            🇬🇧 English
-        </button>
+<button class="card" onclick="showSubject('English')">
+🇬🇧 English
+</button>
 
-        <button class="card" onclick="showSubject('Economics')">
-            💰 Economics
-        </button>
+<button class="card" onclick="showSubject('Economics')">
+💰 Economics
+</button>
 
-        <button class="card" onclick="showSubject('Quality')">
-            ✅ Quality
-        </button>
+<button class="card" onclick="showSubject('Quality')">
+✅ Quality
+</button>
 
-    </div>
+</div>
 
 </div>
 
 
-<!-- MATERIAL TYPES -->
+<!-- ================= MATERIALS ================= -->
+
 <div class="container hidden" id="materials">
 
-    <a class="back" href="#" onclick="backToSubjects()">← Back to Subjects</a>
+<button class="back" onclick="backToSubjects()">
+← Back
+</button>
 
-    <h2 id="subjectTitle">Subject</h2>
+<h2 class="title" id="subjectTitle"></h2>
 
-    <div class="grid">
+<div class="grid">
 
-        <button class="card" onclick="openMaterial('Lectures')">
-            📚 Lectures
-        </button>
+<button class="card" onclick="openMaterial('Lectures')">
+📚 Lectures
+</button>
 
-        <button class="card" onclick="openMaterial('Assignments')">
-            📝 Assignments
-        </button>
+<button class="card" onclick="openMaterial('Assignments')">
+📝 Assignments
+</button>
 
-        <button class="card" onclick="openMaterial('Sections')">
-            👩‍🏫 Sections
-        </button>
+<button class="card" onclick="openMaterial('Sections')">
+👩‍🏫 Sections
+</button>
 
-    </div>
+</div>
 
 </div>
 
 
-<!-- CONTENT -->
+<!-- ================= CONTENT ================= -->
+
 <div class="container hidden" id="content">
 
-    <a class="back" href="#" onclick="backToMaterials()">← Back</a>
+<button class="back" onclick="backToMaterials()">
+← Back
+</button>
 
-    <h2 id="contentTitle"></h2>
+<h2 class="title" id="contentTitle"></h2>
 
-    <div class="card">
-        🚧
-        <br><br>
-        Materials will be added here.
-    </div>
+<div class="message">
+
+<p>
+🚧 Materials will be added here.
+</p>
+
+</div>
 
 </div>
 
 
 <footer>
-    Made for students ❤️
+Made for students ❤️
 </footer>
 
 
 <script>
 
 let currentSection = 1;
+
 let currentSubject = "";
 
 
 /* SECTION */
-function showSection(sectionNumber) {
 
-    currentSection = sectionNumber;
+function showSection(section) {
 
-    document.getElementById("home").classList.add("hidden");
-    document.getElementById("materials").classList.add("hidden");
-    document.getElementById("content").classList.add("hidden");
+currentSection = section;
 
-    document.getElementById("subjects").classList.remove("hidden");
+document.getElementById("home").classList.add("hidden");
 
-    document.getElementById("sectionTitle").innerText =
-        "Section " + sectionNumber;
+document.getElementById("content").classList.add("hidden");
+
+document.getElementById("subjects").classList.remove("hidden");
+
+document.getElementById("sectionTitle").innerText =
+"Section " + section;
+
 }
 
 
 /* SUBJECT */
+
 function showSubject(subject) {
 
-    currentSubject = subject;
+currentSubject = subject;
 
-    document.getElementById("subjects").classList.add("hidden");
-    document.getElementById("content").classList.add("hidden");
+document.getElementById("subjects").classList.add("hidden");
 
-    document.getElementById("materials").classList.remove("hidden");
+document.getElementById("content").classList.add("hidden");
 
-    document.getElementById("subjectTitle").innerText =
-        "Section " + currentSection + " • " + subject;
+document.getElementById("materials").classList.remove("hidden");
+
+document.getElementById("subjectTitle").innerText =
+"Section " + currentSection + " • " + subject;
+
 }
 
 
 /* MATERIAL */
+
 function openMaterial(type) {
 
-    document.getElementById("materials").classList.add("hidden");
+document.getElementById("materials").classList.add("hidden");
 
-    document.getElementById("content").classList.remove("hidden");
+document.getElementById("content").classList.remove("hidden");
 
-    document.getElementById("contentTitle").innerText =
-        "Section " + currentSection +
-        " • " +
-        currentSubject +
-        " • " +
-        type;
+document.getElementById("contentTitle").innerText =
+"Section " +
+currentSection +
+" • " +
+currentSubject +
+" • " +
+type;
+
 }
 
 
 /* HOME */
+
 function goHome() {
 
-    document.getElementById("subjects").classList.add("hidden");
-    document.getElementById("materials").classList.add("hidden");
-    document.getElementById("content").classList.add("hidden");
+document.getElementById("subjects").classList.add("hidden");
 
-    document.getElementById("home").classList.remove("hidden");
+document.getElementById("materials").classList.add("hidden");
+
+document.getElementById("content").classList.add("hidden");
+
+document.getElementById("home").classList.remove("hidden");
+
 }
 
 
-/* BACK TO SUBJECTS */
+/* SUBJECTS */
+
 function backToSubjects() {
 
-    document.getElementById("materials").classList.add("hidden");
-    document.getElementById("content").classList.add("hidden");
+document.getElementById("materials").classList.add("hidden");
 
-    document.getElementById("subjects").classList.remove("hidden");
+document.getElementById("content").classList.add("hidden");
+
+document.getElementById("subjects").classList.remove("hidden");
+
 }
 
 
-/* BACK TO MATERIALS */
+/* MATERIALS */
+
 function backToMaterials() {
 
-    document.getElementById("content").classList.add("hidden");
-    document.getElementById("materials").classList.remove("hidden");
+document.getElementById("content").classList.add("hidden");
+
+document.getElementById("materials").classList.remove("hidden");
+
 }
 
 </script>
