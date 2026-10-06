@@ -100,10 +100,59 @@ header p {
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
+.admin-box {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.admin-input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.admin-button {
+    width: 100%;
+    border: none;
+    background: #172033;
+    color: white;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.admin-button:active {
+    transform: scale(0.98);
+}
+
+.logout {
+    background: #b42318;
+}
+
+#loginMessage {
+    color: #b42318;
+    font-weight: bold;
+}
+
 footer {
     text-align: center;
     color: #888;
     padding: 30px;
+}
+
+.admin-link {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #999;
+    cursor: pointer;
 }
 
 </style>
@@ -228,39 +277,209 @@ footer {
 </div>
 
 
+<!-- ================= ADMIN LOGIN ================= -->
+
+<div class="container hidden" id="adminLogin">
+
+<button class="back" onclick="goHome()">
+← Back
+</button>
+
+<h2 class="title">🔐 Admin Login</h2>
+
+<div class="admin-box">
+
+<input
+    type="text"
+    id="adminUsername"
+    class="admin-input"
+    placeholder="Username"
+>
+
+<input
+    type="password"
+    id="adminPassword"
+    class="admin-input"
+    placeholder="Password"
+>
+
+<button class="admin-button" onclick="adminLogin()">
+Login
+</button>
+
+<p id="loginMessage"></p>
+
+</div>
+
+</div>
+
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+
+<div class="container hidden" id="adminDashboard">
+
+<h2 class="title">🛠️ Admin Dashboard</h2>
+
+<div class="admin-box">
+
+<p><strong>Welcome, Admin 👋</strong></p>
+
+<p>
+From here you will be able to manage AgriHub materials.
+</p>
+
+<hr>
+
+<h3>📚 Choose a Subject</h3>
+
+<div class="grid">
+
+<button class="card" onclick="adminSubject('Botany')">
+🌱 Botany
+</button>
+
+<button class="card" onclick="adminSubject('Organic Agriculture')">
+🌾 Organic Agriculture
+</button>
+
+<button class="card" onclick="adminSubject('Mathematics')">
+📐 Mathematics
+</button>
+
+<button class="card" onclick="adminSubject('English')">
+🇬🇧 English
+</button>
+
+<button class="card" onclick="adminSubject('Economics')">
+💰 Economics
+</button>
+
+<button class="card" onclick="adminSubject('Quality')">
+✅ Quality
+</button>
+
+</div>
+
+<br>
+
+<button class="admin-button logout" onclick="adminLogout()">
+Logout
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= ADMIN SUBJECT ================= -->
+
+<div class="container hidden" id="adminSubject">
+
+<button class="back" onclick="backToAdmin()">
+← Back
+</button>
+
+<h2 class="title" id="adminSubjectTitle"></h2>
+
+<div class="grid">
+
+<button class="card" onclick="adminMaterial('Lectures')">
+📚 Lectures
+</button>
+
+<button class="card" onclick="adminMaterial('Sections')">
+👩‍🏫 Sections
+</button>
+
+<button class="card" onclick="adminMaterial('Assignments')">
+📝 Assignments
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= ADMIN MATERIAL ================= -->
+
+<div class="container hidden" id="adminMaterial">
+
+<button class="back" onclick="backToAdminSubject()">
+← Back
+</button>
+
+<h2 class="title" id="adminMaterialTitle"></h2>
+
+<div class="admin-box">
+
+<h3>➕ Add Material</h3>
+
+<input
+    type="text"
+    id="materialName"
+    class="admin-input"
+    placeholder="Material name"
+>
+
+<input
+    type="file"
+    id="materialFile"
+    class="admin-input"
+>
+
+<button class="admin-button" onclick="addMaterial()">
+Add Material
+</button>
+
+<p id="addMessage"></p>
+
+</div>
+
+</div>
+
+
 <footer>
+
 Made for students ❤️
+
+<div class="admin-link" onclick="showAdminLogin()">
+Admin
+</div>
+
 </footer>
 
 
 <script>
 
 let currentSubject = "";
+let currentAdminSubject = "";
+let currentAdminMaterial = "";
 
 
-/* SECTION → SUBJECTS */
+/* ================= SECTION → SUBJECTS ================= */
 
 function showSubjects() {
 
 document.getElementById("home").classList.add("hidden");
-
 document.getElementById("content").classList.add("hidden");
-
 document.getElementById("materials").classList.add("hidden");
+document.getElementById("adminLogin").classList.add("hidden");
+document.getElementById("adminDashboard").classList.add("hidden");
+document.getElementById("adminSubject").classList.add("hidden");
+document.getElementById("adminMaterial").classList.add("hidden");
 
 document.getElementById("subjects").classList.remove("hidden");
 
 }
 
 
-/* SUBJECT */
+/* ================= SUBJECT ================= */
 
 function showSubject(subject) {
 
 currentSubject = subject;
 
 document.getElementById("subjects").classList.add("hidden");
-
 document.getElementById("content").classList.add("hidden");
 
 document.getElementById("materials").classList.remove("hidden");
@@ -271,12 +490,11 @@ document.getElementById("subjectTitle").innerText =
 }
 
 
-/* MATERIAL */
+/* ================= MATERIAL ================= */
 
 function openMaterial(type) {
 
 document.getElementById("materials").classList.add("hidden");
-
 document.getElementById("content").classList.remove("hidden");
 
 document.getElementById("contentTitle").innerText =
@@ -288,27 +506,28 @@ type;
 }
 
 
-/* HOME */
+/* ================= HOME ================= */
 
 function goHome() {
 
 document.getElementById("subjects").classList.add("hidden");
-
 document.getElementById("materials").classList.add("hidden");
-
 document.getElementById("content").classList.add("hidden");
+document.getElementById("adminLogin").classList.add("hidden");
+document.getElementById("adminDashboard").classList.add("hidden");
+document.getElementById("adminSubject").classList.add("hidden");
+document.getElementById("adminMaterial").classList.add("hidden");
 
 document.getElementById("home").classList.remove("hidden");
 
 }
 
 
-/* SUBJECTS */
+/* ================= SUBJECTS ================= */
 
 function backToSubjects() {
 
 document.getElementById("materials").classList.add("hidden");
-
 document.getElementById("content").classList.add("hidden");
 
 document.getElementById("subjects").classList.remove("hidden");
@@ -316,7 +535,7 @@ document.getElementById("subjects").classList.remove("hidden");
 }
 
 
-/* MATERIALS */
+/* ================= MATERIALS ================= */
 
 function backToMaterials() {
 
@@ -326,14 +545,196 @@ document.getElementById("materials").classList.remove("hidden");
 
 }
 
+
+/* ================= ADMIN LOGIN SCREEN ================= */
+
+function showAdminLogin() {
+
+document.getElementById("home").classList.add("hidden");
+document.getElementById("subjects").classList.add("hidden");
+document.getElementById("materials").classList.add("hidden");
+document.getElementById("content").classList.add("hidden");
+
+document.getElementById("adminDashboard").classList.add("hidden");
+document.getElementById("adminSubject").classList.add("hidden");
+document.getElementById("adminMaterial").classList.add("hidden");
+
+document.getElementById("adminLogin").classList.remove("hidden");
+
+}
+
+
+/* ================= ADMIN LOGIN ================= */
+
+/*
+Demo login:
+Username: admin
+Password: AgriHub123
+*/
+
+function adminLogin() {
+
+let username =
+document.getElementById("adminUsername").value;
+
+let password =
+document.getElementById("adminPassword").value;
+
+
+/* DEMO LOGIN */
+
+if (username === "admin" && password === "AgriHub123") {
+
+document.getElementById("adminLogin").classList.add("hidden");
+
+document.getElementById("adminDashboard").classList.remove("hidden");
+
+document.getElementById("loginMessage").innerText = "";
+
+} else {
+
+document.getElementById("loginMessage").innerText =
+"❌ Incorrect username or password.";
+
+}
+
+}
+
+
+/* ================= ADMIN DASHBOARD ================= */
+
+function adminSubject(subject) {
+
+currentAdminSubject = subject;
+
+document.getElementById("adminDashboard").classList.add("hidden");
+
+document.getElementById("adminSubject").classList.remove("hidden");
+
+document.getElementById("adminSubjectTitle").innerText =
+"Admin • " + subject;
+
+}
+
+
+/* ================= ADMIN MATERIAL ================= */
+
+function adminMaterial(type) {
+
+currentAdminMaterial = type;
+
+document.getElementById("adminSubject").classList.add("hidden");
+
+document.getElementById("adminMaterial").classList.remove("hidden");
+
+document.getElementById("adminMaterialTitle").innerText =
+"Add • " +
+currentAdminSubject +
+" • " +
+type;
+
+}
+
+
+/* ================= ADD MATERIAL ================= */
+
+function addMaterial() {
+
+let name =
+document.getElementById("materialName").value;
+
+let file =
+document.getElementById("materialFile").files[0];
+
+let message =
+document.getElementById("addMessage");
+
+
+if (!name || !file) {
+
+message.style.color = "#b42318";
+
+message.innerText =
+"Please enter a name and choose a file.";
+
+return;
+
+}
+
+
+/*
+This is only a first-stage demo.
+The file is selected successfully,
+but it is NOT uploaded to a server yet.
+*/
+
+message.style.color = "#16803c";
+
+message.innerText =
+"✅ " +
+name +
+" selected successfully.";
+
+
+/* Clear fields */
+
+document.getElementById("materialName").value = "";
+document.getElementById("materialFile").value = "";
+
+}
+
+
+/* ================= ADMIN NAVIGATION ================= */
+
+function backToAdmin() {
+
+document.getElementById("adminSubject").classList.add("hidden");
+
+document.getElementById("adminDashboard").classList.remove("hidden");
+
+}
+
+
+function backToAdminSubject() {
+
+document.getElementById("adminMaterial").classList.add("hidden");
+
+document.getElementById("adminSubject").classList.remove("hidden");
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+function adminLogout() {
+
+document.getElementById("adminDashboard").classList.add("hidden");
+document.getElementById("adminSubject").classList.add("hidden");
+document.getElementById("adminMaterial").classList.add("hidden");
+
+document.getElementById("adminLogin").classList.add("hidden");
+
+document.getElementById("home").classList.remove("hidden");
+
+document.getElementById("adminUsername").value = "";
+document.getElementById("adminPassword").value = "";
+
+}
+
+
+/* ================= SERVICE WORKER ================= */
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", () => {
+
+        navigator.serviceWorker.register("./service-worker.js");
+
+    });
+
+}
+
 </script>
 
-<script>
-if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./service-worker.js");
-    });
-}
-</script>
 </body>
     </html>
