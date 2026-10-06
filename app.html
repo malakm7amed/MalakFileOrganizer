@@ -638,28 +638,58 @@ type;
 
 /* ================= ADD MATERIAL ================= */
 
-function addMaterial() {
+async function addMaterial() {
+  let name = document.getElementById("materialName").value;
+  let file = document.getElementById("materialFile").files[0];
+  let message = document.getElementById("addMessage");
 
-let name =
-document.getElementById("materialName").value;
+  if (!name || !file) {
+    message.style.color = "#b42318";
+    message.innerText = "Please enter a name and choose a file.";
+    return;
+  }
 
-let file =
-document.getElementById("materialFile").files[0];
+  message.style.color = "#333";
+  message.innerText = "⏳ Uploading...";
 
-let message =
-document.getElementById("addMessage");
+  const fileName = Date.now() + "_" + file.name;
 
+  const { error: uploadError } = await supabaseClient
+    .storage
+    .from("agrihub-files")
+    .upload(fileName, file);
 
-if (!name || !file) {
+  if (uploadError) {
+    message.style.color = "#b42318";
+    message.innerText = "❌ Upload failed: " + uploadError.message;
+    return;
+  }
 
-message.style.color = "#b42318";
+  const { data: urlData } = supabaseClient
+    .storage
+    .from("agrihub-files")
+    .getPublicUrl(fileName);
 
-message.innerText =
-"Please enter a name and choose a file.";
+  const { error: dbError } = await supabaseClient
+    .from("materials")
+    .insert([{
+      name: name,
+      file_url: urlData.publicUrl,
+      file_type: file.type
+    }]);
 
-return;
+  if (dbError) {
+    message.style.color = "#b42318";
+    message.innerText = "❌ Database error: " + dbError.message;
+    return;
+  }
 
-}
+  message.style.color = "#16803c";
+  message.innerText = "✅ Material uploaded successfully!";
+
+  document.getElementById("materialName").value = "";
+  document.getElementById("materialFile").value = "";
+    }
 
 
 /*
@@ -749,3 +779,4 @@ const supabaseClient = window.supabase.createClient(
 
 </body>
     </html>
+    
